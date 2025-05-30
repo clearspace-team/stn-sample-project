@@ -5,10 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const createWebhookTriggerDiv = document.getElementById(
     "createWebhookTrigger"
   );
-  const loadTriggersButton = document.getElementById("loadTriggersButton");
-  const webhookTriggersDiv = document.getElementById("webhookTriggers");
   const testWebhookButton = document.getElementById("testWebhookButton");
-  const triggerId = document.getElementById("triggerId");
+  const testWebhookTriggerDiv = document.getElementById("testWebhookTrigger");
 
   testButton.addEventListener("click", async () => {
     try {
@@ -58,6 +56,9 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         body: JSON.stringify({ triggerId: id }),
       });
+
+      testWebhookTriggerDiv.textContent = "Webhook trigger tested!";
+      testWebhookTriggerDiv.className = "success";
     } catch (error) {
       alert("Error testing webhook trigger");
       console.error("Error:", error);
