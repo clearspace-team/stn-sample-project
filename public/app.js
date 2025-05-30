@@ -43,18 +43,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   testWebhookButton.addEventListener("click", async () => {
     try {
-      const id = triggerId.value.trim();
-      if (!id) {
-        alert("Please enter a trigger ID");
-        return;
-      }
-
       const _response = await fetch("/api/testWebhookTrigger", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ triggerId: id }),
       });
 
       testWebhookTriggerDiv.textContent = "Webhook trigger tested!";
