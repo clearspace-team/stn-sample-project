@@ -95,7 +95,11 @@ app.get("/api/screenTimeToday", async (_req: Request, res: Response) => {
     `/screenTimeToday?handle=${YOUR_HANDLE}`,
     "GET"
   );
-  res.json(screenTimeTodayData.data);
+  if (!screenTimeTodayData.success) {
+    return res.status(400).send(screenTimeTodayData.error);
+  } else {
+    return res.json(screenTimeTodayData.data);
+  }
 });
 
 let localTunnelUrl: string | null = null;
@@ -116,7 +120,11 @@ app.post("/api/createWebhookTrigger", async (req: Request, res: Response) => {
   );
   webhookTriggerId = createWebhookTriggerData.data?.id;
 
-  res.json(createWebhookTriggerData.data);
+  if (!createWebhookTriggerData.success) {
+    return res.status(400).send(createWebhookTriggerData.error);
+  } else {
+    return res.json(createWebhookTriggerData.data);
+  }
 });
 
 app.post("/api/testWebhookTrigger", async (req: Request, res: Response) => {

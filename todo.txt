@@ -1,3 +1,0 @@
-- swap out send email for native notification
-- improve the README
-- change to TEST trigger
