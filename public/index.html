@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Screen Time Network API</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Screen Time Network API</h1>
+
+    <div class="container">
+      <div class="card">
+        <h2>Load Your Screen Time</h2>
+        <pre id="screenTimeToday"></pre>
+        <button id="testButton">Load Your Screen Time</button>
+      </div>
+
+      <div class="card">
+        <h2>Create Webhook Trigger</h2>
+        <button id="webhookButton">Create Webhook Trigger</button>
+        <p>
+          This is the URL that will receive a POST request when a webhook
+          trigger is fired.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Load Your Webhook Triggers</h2>
+        <pre id="webhookTriggers"></pre>
+        <button id="loadTriggersButton">Load Webhook Triggers</button>
+      </div>
+
+      <div class="card">
+        <h2>Test Webhook Trigger</h2>
+        <div class="input-group">
+          <input type="text" id="triggerId" placeholder="Enter trigger ID" />
+          <button id="testWebhookButton">Test Webhook Trigger</button>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
