@@ -72,20 +72,13 @@ button:hover {
 }
 
 #screenTimeToday,
-#createWebhookTrigger,
-#testWebhookTrigger {
+#webhookTriggers,
+#createWebhookTrigger {
   margin: 20px 0;
   padding: 10px;
   border-radius: 4px;
   min-height: 20px;
   text-align: left;
-  white-space: pre-wrap; /* Since CSS 2.1 */
-  white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
-  white-space: -pre-wrap; /* Opera 4-6 */
-  white-space: -o-pre-wrap; /* Opera 7 */
-  word-wrap: break-word; /* Internet Explorer 5.5+ */
-  max-width: 100%;
-  overflow-x: auto;
 }
 
 .success {

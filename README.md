@@ -8,25 +8,25 @@ This is a sample project demonstrating how to integrate with the STN API. It inc
 - npm (comes with Node.js)
 - A Screen Time Network account with API access
 
-## Setup
+## Quickstart
 
 1. Clone this repository:
 
-```bash
-git clone [repository-url]
-cd stn-api-sample
-```
+   ```bash
+   git clone https://github.com/clearspace-team/stn-sample-project
+   cd stn-sample-project
+   ```
 
 2. Install dependencies:
 
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
 3. Configure your API credentials:
 
-   - Get your API key from The Screen Time Network dashboard
-   - Get your webhook secret from the The Screen Time Network dashboard
+   - Sign in to [The Screen Time Network](https://www.thescreentimenetwork.com/) and create a handle
+   - Copy your API key and Webhook Secret from the [API docs](https://www.thescreentimenetwork.com/api)
    - Fill in the constants at the top of server.ts
 
    ```
@@ -37,9 +37,11 @@ npm install
 
 4. Build and Run the server
 
-   ```
+   ```bash
    npm start
    ```
+
+5. Visit localhost:8000 in a browser to load the client and follow the instructions to test the API.
 
 ### Development Mode
 

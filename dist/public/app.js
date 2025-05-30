@@ -43,6 +43,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  loadTriggersButton.addEventListener("click", async () => {
+    try {
+      const response = await fetch("/api/getWebhookTriggers");
+      const data = await response.json();
+
+      webhookTriggersDiv.textContent = JSON.stringify(data, null, 2);
+      webhookTriggersDiv.className = "success";
+    } catch (error) {
+      webhookTriggersDiv.textContent = "Error loading webhook triggers";
+      webhookTriggersDiv.className = "error";
+      console.error("Error:", error);
+    }
+  });
+
   testWebhookButton.addEventListener("click", async () => {
     try {
       const id = triggerId.value.trim();

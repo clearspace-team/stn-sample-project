@@ -11,27 +11,29 @@
 
     <div class="container">
       <div class="card">
-        <h2>Fetch Your Screen Time</h2>
+        <h2>Load Your Screen Time</h2>
+        <pre id="screenTimeToday"></pre>
         <button id="testButton">Load Your Screen Time</button>
-        <pre id="screenTimeToday">
-          Click the button above to fetch your screen time for today.
-        </pre>
       </div>
 
       <div class="card">
         <h2>Create Webhook Trigger</h2>
         <button id="webhookButton">Create Webhook Trigger</button>
-        <pre id="createWebhookTrigger">
-          Click the button above to create a webhook trigger that will POST to your local server.
-        </pre>
+        <pre id="createWebhookTrigger"></pre>
+      </div>
+
+      <div class="card">
+        <h2>Load Your Webhook Triggers</h2>
+        <pre id="webhookTriggers"></pre>
+        <button id="loadTriggersButton">Load Webhook Triggers</button>
       </div>
 
       <div class="card">
         <h2>Test Webhook Trigger</h2>
-        <button id="testWebhookButton">Test Webhook Trigger</button>
-        <pre id="testWebhookTrigger">
-          Click the button above to test the webhook trigger you created. If it succeeds, you should see a notification in your terminal.
-        </pre>
+        <div class="input-group">
+          <input type="text" id="triggerId" placeholder="Enter trigger ID" />
+          <button id="testWebhookButton">Test Webhook Trigger</button>
+        </div>
       </div>
     </div>
     <script src="app.js"></script>

@@ -1,4 +1,5 @@
 export enum WebhookTriggers {
+  TEST = "TEST", // test trigger for sample project
   LOST_CONNECTION = "LOST_CONNECTION", // user's device lost connection to the network
   CHANGED_HANDLE = "CHANGED_HANDLE", // user changed their handle
   CHANGED_VISIBILITY_TO_PUBLIC = "CHANGED_VISIBILITY_TO_PUBLIC", // user changed their visibility to public

@@ -4,13 +4,14 @@ import crypto from "crypto";
 import localtunnel from "localtunnel";
 
 import { WebhookTriggers } from "./triggers";
+import { displayASCIIArt } from "./displayASCIIArt";
 
 // --- Constants --- //
 // TODO: Insert your API key and webhook secret here
-const API_KEY = "<INSERT_API_KEY_HERE>";
-const WEBHOOK_SECRET = "<INSERT_WEBHOOK_SECRET_HERE>";
-const YOUR_HANDLE = "<INSERT_YOUR_HANDLE_HERE>"; // your Screen Time Network handle
-const API_URL = "<INSERT_API_URL_HERE>"; // your Screen Time Network API URL
+const API_URL = "https://api.thescreentimenetwork.com/external/v1"; // The Screen Time Network API URL
+const API_KEY = "your_api_key";
+const WEBHOOK_SECRET = "your_webhook_secret";
+const YOUR_HANDLE = "your_screen_time_network_handle"; // Your Screen Time Network handle
 
 // ---- Utils ---- //
 const makeAPIRequest = async (
@@ -73,7 +74,8 @@ app.post(
 
     const { handle, trigger } = body;
 
-    console.log("Received webhook trigger!", { trigger, handle });
+    console.log("\nReceived webhook trigger!", { handle, trigger });
+    displayASCIIArt(`${handle} -> ${trigger}`);
 
     res.status(200).send();
   }
@@ -94,6 +96,7 @@ app.get("/api/screenTimeToday", async (_req: Request, res: Response) => {
 });
 
 let localTunnelUrl: string | null = null;
+let webhookTriggerId: string | null = null; // NOTE: Storing this here for testing purposes, you should store these ids yourself to test them
 app.post("/api/createWebhookTrigger", async (req: Request, res: Response) => {
   if (!localTunnelUrl) {
     return res.status(500).send("Local tunnel URL not found");
@@ -105,26 +108,23 @@ app.post("/api/createWebhookTrigger", async (req: Request, res: Response) => {
     JSON.stringify({
       handle: YOUR_HANDLE,
       webhookURL: `${localTunnelUrl}/api/webhook`,
-      trigger: WebhookTriggers.CHANGED_HANDLE, // for now, we'll use the CHANGED_HANDLE trigger to test the webhook
+      trigger: WebhookTriggers.TEST,
     })
   );
+  webhookTriggerId = createWebhookTriggerData.data?.id;
+
   res.json(createWebhookTriggerData.data);
 });
 
-app.get("/api/getWebhookTriggers", async (req: Request, res: Response) => {
-  const getWebhookTriggersData = await makeAPIRequest(
-    `/getWebhookTriggers`,
-    "GET"
-  );
-  res.json(getWebhookTriggersData.data);
-});
-
 app.post("/api/testWebhookTrigger", async (req: Request, res: Response) => {
-  const { triggerId } = req.body;
+  if (!webhookTriggerId) {
+    return res.status(400).send("Webhook trigger ID not found");
+  }
+
   await makeAPIRequest(
     `/testWebhookTrigger`,
     "POST",
-    JSON.stringify({ id: triggerId })
+    JSON.stringify({ id: webhookTriggerId })
   );
   res.status(200).send();
 });
