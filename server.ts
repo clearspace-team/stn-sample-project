@@ -9,7 +9,8 @@ import { WebhookTriggers } from "./triggers";
 // TODO: Insert your API key and webhook secret here
 const API_KEY = "<INSERT_API_KEY_HERE>";
 const WEBHOOK_SECRET = "<INSERT_WEBHOOK_SECRET_HERE>";
-const YOUR_HANDLE = "<INSERT_YOUR_HANDLE_HERE>";
+const YOUR_HANDLE = "<INSERT_YOUR_HANDLE_HERE>"; // your Screen Time Network handle
+const API_URL = "<INSERT_API_URL_HERE>"; // your Screen Time Network API URL
 
 // ---- Utils ---- //
 const makeAPIRequest = async (
