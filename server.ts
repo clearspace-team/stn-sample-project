@@ -74,8 +74,11 @@ app.post(
 
     const { handle, trigger } = body;
 
-    console.log("\nReceived webhook trigger!", { handle, trigger });
-    displayASCIIArt(`${handle} -> ${trigger}`);
+
+    console.log("\n\n")
+    displayASCIIArt(`Webhook Received!`);
+    console.log("\nWebhook Payload:", { handle, trigger });
+    console.log("\n\n\n\n\n\n")
 
     res.status(200).send();
   }
